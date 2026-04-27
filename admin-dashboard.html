@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin Control Panel - KNHS</title>
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+  </head>
+
+  <body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h2>⚙️ KNHS ADMIN</h2>
+        <button class="sidebar-close" id="sidebarClose">✕</button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-link active" data-section="overview">
+          <span class="icon">📊</span>
+          <span>Overview</span>
+        </a>
+        <a href="#" class="nav-link" data-section="users">
+          <span class="icon">👥</span>
+          <span>User Management</span>
+        </a>
+        <a href="#" class="nav-link" data-section="classes">
+          <span class="icon">🏫</span>
+          <span>Classes</span>
+        </a>
+        <a href="#" class="nav-link" data-section="grades">
+          <span class="icon">📝</span>
+          <span>Grades Control</span>
+        </a>
+        <a href="#" class="nav-link" data-section="announcements">
+          <span class="icon">📢</span>
+          <span>Announcements</span>
+        </a>
+        <a href="#" class="nav-link" data-section="reports">
+          <span class="icon">📈</span>
+          <span>Reports</span>
+        </a>
+        <a href="#" class="nav-link" data-section="logs">
+          <span class="icon">🧾</span>
+          <span>System Logs</span>
+        </a>
+        <a href="#" class="nav-link" data-section="settings">
+          <span class="icon">⚙️</span>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-indicator">
+          <span class="status-dot active"></span>
+          <span>System Online</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+      <!-- TOPBAR -->
+      <div class="topbar">
+
+        <div class="topbar-left">
+          <button class="menu-btn" id="menuBtn">☰</button>
+          <div class="topbar-title">
+            <h3>Admin Control Panel</h3>
+            <p>System Overview & Management</p>
+          </div>
+        </div>
+
+        <div class="topbar-center">
+          <div class="search-box">
+            <input type="text" placeholder="Search users, classes..." id="searchInput">
+            <span class="search-icon">🔍</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="notifications">
+            <button class="notification-btn" id="notificationBtn">
+              🔔
+              <span class="notification-badge" id="notificationBadge">3</span>
+            </button>
+            <div class="notification-dropdown" id="notificationDropdown">
+              <div class="notification-item alert">
+                <strong>⚠️ Critical:</strong> Database backup failed
+              </div>
+              <div class="notification-item warning">
+                <strong>⚡ Warning:</strong> Server load at 85%
+              </div>
+              <div class="notification-item info">
+                <strong>ℹ️ Info:</strong> 5 new user registrations
+              </div>
+              <a href="#" class="notification-footer">View All</a>
+            </div>
+          </div>
+
+          <button class="logout-btn">Logout</button>
+        </div>
+
+      </div>
+
+      <!-- ALERTS -->
+      <div class="alerts" id="alertsContainer"></div>
+
+      <!-- SYSTEM STATS -->
+      <div class="grid grid-4">
+
+        <div class="stat-card">
+          <div class="stat-icon student">👨‍🎓</div>
+          <div class="stat-content">
+            <h3>Total Students</h3>
+            <p class="stat-value">1,245</p>
+            <p class="stat-trend">↑ 12% this month</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon teacher">👩‍🏫</div>
+          <div class="stat-content">
+            <h3>Teachers</h3>
+            <p class="stat-value">78</p>
+            <p class="stat-trend">↑ 2 new hires</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon class">🏫</div>
+          <div class="stat-content">
+            <h3>Classes</h3>
+            <p class="stat-value">36</p>
+            <p class="stat-trend">Full capacity</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon health">💚</div>
+          <div class="stat-content">
+            <h3>System Health</h3>
+            <p class="stat-value">Excellent</p>
+            <p class="stat-trend">Uptime: 99.9%</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CONTROL PANELS -->
+      <div class="grid grid-4">
+
+        <div class="action-card">
+          <div class="card-header">
+            <h3>👥 User Control</h3>
+            <span class="badge">4 actions</span>
+          </div>
+          <p>Create, edit, and manage user accounts</p>
+          <div class="card-actions">
+            <button class="btn btn-primary" data-action="create-user">+ New User</button>
+            <button class="btn btn-secondary" data-action="view-users">View All</button>
+          </div>
+        </div>
+
+        <div class="action-card">
+          <div class="card-header">
+            <h3>🏫 Class Control</h3>
+            <span class="badge">36 classes</span>
+          </div>
+          <p>Assign teachers & manage sections</p>
+          <div class="card-actions">
+            <button class="btn btn-primary" data-action="create-class">+ New Class</button>
+            <button class="btn btn-secondary" data-action="view-classes">View All</button>
+          </div>
+        </div>
+
+        <div class="action-card">
+          <div class="card-header">
+            <h3>📝 Grade Control</h3>
+            <span class="badge">Locked</span>
+          </div>
+          <p>Override and validate student grades</p>
+          <div class="card-actions">
+            <button class="btn btn-primary" data-action="open-grades">Open Gradebook</button>
+            <button class="btn btn-secondary" data-action="grade-reports">Reports</button>
+          </div>
+        </div>
+
+        <div class="action-card">
+          <div class="card-header">
+            <h3>📢 Announcements</h3>
+            <span class="badge">5 pending</span>
+          </div>
+          <p>Broadcast messages to the system</p>
+          <div class="card-actions">
+            <button class="btn btn-primary" data-action="create-announce">+ New</button>
+            <button class="btn btn-secondary" data-action="view-announces">View All</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SYSTEM PERFORMANCE & ACTIVITY -->
+      <div class="grid grid-2">
+
+        <!-- SYSTEM LOGS -->
+        <div class="card full-height">
+          <div class="card-header">
+            <h3>🧾 Recent Activity</h3>
+            <div class="card-controls">
+              <select id="logFilter" class="filter-select">
+                <option value="all">All Events</option>
+                <option value="login">Logins</option>
+                <option value="update">Updates</option>
+                <option value="security">Security</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="activity-list" id="activityList">
+            <div class="activity-item login">
+              <div class="activity-icon">🔐</div>
+              <div class="activity-content">
+                <p class="activity-title">Teacher logged in</p>
+                <p class="activity-detail">Maria Santos - IP: 192.168.1.45</p>
+              </div>
+              <span class="activity-time">10:21 AM</span>
+            </div>
+
+            <div class="activity-item update">
+              <div class="activity-icon">📝</div>
+              <div class="activity-content">
+                <p class="activity-title">Grade submitted</p>
+                <p class="activity-detail">Mathematics 10 - 45 grades updated</p>
+              </div>
+              <span class="activity-time">09:45 AM</span>
+            </div>
+
+            <div class="activity-item edit">
+              <div class="activity-icon">✏️</div>
+              <div class="activity-content">
+                <p class="activity-title">Student record modified</p>
+                <p class="activity-detail">Juan Dela Cruz - Contact info updated</p>
+              </div>
+              <span class="activity-time">08:30 AM</span>
+            </div>
+
+            <div class="activity-item security">
+              <div class="activity-icon">⚠️</div>
+              <div class="activity-content">
+                <p class="activity-title">Admin accessed restricted panel</p>
+                <p class="activity-detail">System logs viewed - Full audit trail</p>
+              </div>
+              <span class="activity-time">07:15 AM</span>
+            </div>
+
+            <div class="activity-item login">
+              <div class="activity-icon">🔐</div>
+              <div class="activity-content">
+                <p class="activity-title">Student portal login</p>
+                <p class="activity-detail">45 students logged in this morning</p>
+              </div>
+              <span class="activity-time">06:20 AM</span>
+            </div>
+          </div>
+
+          <a href="#" class="view-more">View full activity log →</a>
+        </div>
+
+        <!-- SYSTEM STATUS -->
+        <div class="card full-height">
+          <div class="card-header">
+            <h3>📊 System Status</h3>
+            <span class="live-indicator">● LIVE</span>
+          </div>
+
+          <div class="status-grid">
+            <div class="status-item">
+              <div class="status-row">
+                <span>Active Users</span>
+                <span class="status-value high">342</span>
+              </div>
+              <div class="status-bar">
+                <div class="status-fill" style="width: 68%"></div>
+              </div>
+            </div>
+
+            <div class="status-item">
+              <div class="status-row">
+                <span>Database Health</span>
+                <span class="status-value good">98%</span>
+              </div>
+              <div class="status-bar">
+                <div class="status-fill" style="width: 98%"></div>
+              </div>
+            </div>
+
+            <div class="status-item">
+              <div class="status-row">
+                <span>Server Load</span>
+                <span class="status-value good">32%</span>
+              </div>
+              <div class="status-bar">
+                <div class="status-fill" style="width: 32%"></div>
+              </div>
+            </div>
+
+            <div class="status-item">
+              <div class="status-row">
+                <span>API Response</span>
+                <span class="status-value good">142ms</span>
+              </div>
+              <div class="status-bar">
+                <div class="status-fill" style="width: 28%"></div>
+              </div>
+            </div>
+
+            <div class="status-item">
+              <div class="status-row">
+                <span>Disk Usage</span>
+                <span class="status-value warning">76%</span>
+              </div>
+              <div class="status-bar">
+                <div class="status-fill" style="width: 76%"></div>
+              </div>
+            </div>
+
+            <div class="status-item">
+              <div class="status-row">
+                <span>Memory Usage</span>
+                <span class="status-value good">54%</span>
+              </div>
+              <div class="status-bar">
+                <div class="status-fill" style="width: 54%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="status-footer">
+            <small>Last updated: Just now</small>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- QUICK ACTIONS -->
+      <div class="grid grid-3">
+
+        <div class="quick-action-card danger">
+          <h3>🚨 Emergency Actions</h3>
+          <button class="btn btn-danger" data-action="emergency">System Maintenance</button>
+          <button class="btn btn-danger" data-action="lockdown">Lock Down System</button>
+        </div>
+
+        <div class="quick-action-card warning">
+          <h3>⚡ Backup & Security</h3>
+          <button class="btn btn-warning" data-action="backup">Force Backup</button>
+          <button class="btn btn-warning" data-action="security">Security Scan</button>
+        </div>
+
+        <div class="quick-action-card info">
+          <h3>📋 Generate Reports</h3>
+          <button class="btn btn-info" data-action="attendance-report">Attendance</button>
+          <button class="btn btn-info" data-action="performance-report">Performance</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="js/admin-dashboard.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+      // FIXED: replaced weak localStorage role check with real JWT verification
+      guardRoute("admin");
+    </script>
+
+  </body>
+</html>

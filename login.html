@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KNHS Portal — Login</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <div class="page-wrap">
+
+    <!-- BRAND -->
+    <div class="brand-panel">
+      <div class="brand-glow"></div>
+
+      <div class="brand-content">
+        <div class="school-crest">
+          <div class="crest-ring outer"></div>
+          <div class="crest-ring middle"></div>
+          <div class="crest-icon">🎓</div>
+        </div>
+
+        <h1 class="school-name">Kiwalan National<br>High School</h1>
+        <p class="school-sub">School Information System</p>
+        <div class="brand-divider"></div>
+        <p class="brand-tagline">Secure • Simple • Connected Learning</p>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-panel">
+      <div class="form-card">
+
+        <div class="form-header">
+          <h2>Welcome back</h2>
+          <p>Sign in to your portal account</p>
+        </div>
+
+        <div class="msg-box" id="msgBox"></div>
+
+        <!-- IDENTIFIER -->
+        <div class="field-group">
+          <label for="identifier">Email or Full Name</label>
+          <div class="input-wrap">
+            <span class="input-icon">👤</span>
+            <input type="text" id="identifier" placeholder="Enter email or full name"/>
+          </div>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="field-group">
+          <label for="password">Password</label>
+          <div class="input-wrap">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="password" placeholder="Enter password"/>
+          </div>
+        </div>
+
+        <!-- ROLE -->
+        <div class="field-group">
+          <label>Select Role</label>
+
+          <div class="role-grid">
+            <button type="button" class="role-btn" data-role="student">👨‍🎓 Student</button>
+            <button type="button" class="role-btn" data-role="teacher">👩‍🏫 Teacher</button>
+            <button type="button" class="role-btn" data-role="admin">⚙️ Admin</button>
+          </div>
+        </div>
+
+        <!-- FORGOT -->
+        <div class="remember-row">
+          <a href="forgot-password.html" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <!-- LOGIN BUTTON -->
+        <button class="submit-btn" id="loginBtn" type="button">
+          <span class="btn-text">Sign In</span>
+          <span class="btn-spinner hidden" id="loginSpinner">⟳</span>
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/login.js"></script>
+
+</body>
+</html>

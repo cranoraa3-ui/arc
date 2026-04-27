@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KNHS Portal — Sign Up</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/signup.css">
+</head>
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <div class="page-wrap">
+
+    <!-- LEFT BRAND -->
+    <div class="brand-panel">
+      <div class="brand-glow"></div>
+      <div class="brand-content">
+        <div class="school-crest">
+          <div class="crest-ring outer"></div>
+          <div class="crest-ring middle"></div>
+          <div class="crest-icon">🎓</div>
+        </div>
+        <h1 class="school-name">Kiwalan National<br>High School</h1>
+        <p class="school-sub">School Information System</p>
+        <div class="brand-divider"></div>
+        <p class="brand-tagline">Secure • Simple • Connected Learning</p>
+
+        <div class="brand-steps">
+          <div class="step active" data-step="1">
+            <div class="step-dot">1</div>
+            <span>Your Info</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step" data-step="2">
+            <div class="step-dot">2</div>
+            <span>Security</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step" data-step="3">
+            <div class="step-dot">3</div>
+            <span>Role</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="form-panel">
+      <div class="form-card">
+
+        <div class="form-header">
+          <h2>Create account</h2>
+          <p>Join the KNHS School Portal</p>
+        </div>
+
+        <div class="msg-box" id="msgBox"></div>
+
+        <form id="signupForm" novalidate>
+
+          <!-- FULL NAME -->
+          <div class="field-group">
+            <label for="name">Full Name</label>
+            <div class="input-wrap">
+              <span class="input-icon">👤</span>
+              <input type="text" id="name" name="name" placeholder="e.g. Juan Dela Cruz" autocomplete="name"/>
+            </div>
+            <span class="field-error" id="nameErr"></span>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="field-group">
+            <label for="email">Email Address</label>
+            <div class="input-wrap">
+              <span class="input-icon">✉️</span>
+              <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email"/>
+            </div>
+            <span class="field-error" id="emailErr"></span>
+          </div>
+
+          <!-- YEAR LEVEL -->
+          <div class="field-group">
+            <label for="yearLevel">Year Level <span class="optional">(optional)</span></label>
+            <div class="input-wrap select-wrap">
+              <span class="input-icon">📚</span>
+              <select id="yearLevel" name="yearLevel">
+                <option value="">Select year level</option>
+                <option value="Grade 7">Grade 7</option>
+                <option value="Grade 8">Grade 8</option>
+                <option value="Grade 9">Grade 9</option>
+                <option value="Grade 10">Grade 10</option>
+                <option value="Grade 11">Grade 11</option>
+                <option value="Grade 12">Grade 12</option>
+                <option value="N/A">Not Applicable</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="field-group">
+            <label for="password">Password</label>
+            <div class="input-wrap">
+              <span class="input-icon">🔒</span>
+              <input type="password" id="password" name="password" placeholder="Create a strong password" autocomplete="new-password"/>
+              <button type="button" class="toggle-pw" id="togglePw1" aria-label="Show password">
+                <span id="eye1">👁</span>
+              </button>
+            </div>
+            <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+            <span class="strength-label" id="strengthLabel"></span>
+            <span class="field-error" id="passwordErr"></span>
+          </div>
+
+          <!-- CONFIRM PASSWORD -->
+          <div class="field-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <div class="input-wrap">
+              <span class="input-icon">🔐</span>
+              <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat your password" autocomplete="new-password"/>
+              <button type="button" class="toggle-pw" id="togglePw2" aria-label="Show password">
+                <span id="eye2">👁</span>
+              </button>
+            </div>
+            <span class="field-error" id="confirmErr"></span>
+          </div>
+
+          <!-- ROLE -->
+          <div class="field-group">
+            <label>Select Your Role</label>
+            <div class="role-grid">
+              <button type="button" class="role-btn" data-role="student">
+                <span class="role-emoji">👨‍🎓</span>
+                <span class="role-name">Student</span>
+                <span class="role-desc">View grades & schedule</span>
+                <span class="role-check">✓</span>
+              </button>
+              <button type="button" class="role-btn" data-role="teacher">
+                <span class="role-emoji">👩‍🏫</span>
+                <span class="role-name">Teacher</span>
+                <span class="role-desc">Manage classes & grades</span>
+                <span class="role-check">✓</span>
+              </button>
+            </div>
+            <span class="field-error" id="roleErr"></span>
+            <input type="hidden" name="role" id="roleInput"/>
+          </div>
+
+          <!-- TERMS -->
+          <div class="field-group">
+            <label class="checkbox-wrap">
+              <input type="checkbox" id="termsCheck"/>
+              <span class="checkmark"></span>
+              I agree to the <a href="#" class="terms-link">Terms &amp; Conditions</a>
+            </label>
+            <span class="field-error" id="termsErr"></span>
+          </div>
+
+          <!-- SUBMIT -->
+          <button type="submit" class="submit-btn" id="signupBtn">
+            <span class="btn-text">Create Account</span>
+            <span class="btn-spinner hidden" id="signupSpinner">⟳</span>
+          </button>
+
+        </form>
+
+        <div class="form-footer">
+          Already have an account? <a href="login.html">Sign In</a>
+          &nbsp;·&nbsp;
+          <a href="../knhs-website/website.html">Back to Home</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/signup.js"></script>
+  <script>
+    const container = document.getElementById('stars');
+    for (let i = 0; i < 80; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${Math.random()*2+1}px;height:${Math.random()*2+1}px;animation-delay:${Math.random()*4}s;animation-duration:${Math.random()*3+2}s;`;
+      container.appendChild(s);
+    }
+  </script>
+</body>
+</html>

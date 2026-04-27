@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - Kiwalan National High School</title>
+    <link rel="stylesheet" href="css/teacher-dashboard.css">  
+  </head>
+
+  <body>
+
+    <!-- HEADER BANNER -->
+    <div class="header-banner">
+      <div class="header-content">
+        <div class="header-logo">
+          <div class="logo-circle">K</div>
+        </div>
+        <div class="header-title">
+          <h1>Kiwalan National High School</h1>
+          <p>Teacher Information System</p>
+        </div>
+        <div class="header-right">
+          <span class="school-year">2024-2025 • Quarter 2</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h2>Navigation</h2>
+        <button class="sidebar-close" id="sidebarClose">✕</button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <p class="nav-section-title">Main</p>
+          <a href="#" class="nav-link active" data-section="dashboard">
+            <span class="icon">📊</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="nav-link" data-section="classes">
+            <span class="icon">📚</span>
+            <span>My Classes</span>
+          </a>
+          <a href="#" class="nav-link" data-section="gradebook">
+            <span class="icon">📋</span>
+            <span>Gradebook</span>
+          </a>
+          <a href="#" class="nav-link" data-section="attendance">
+            <span class="icon">✓</span>
+            <span>Attendance</span>
+          </a>
+          <a href="#" class="nav-link" data-section="schedule">
+            <span class="icon">📅</span>
+            <span>Schedule</span>
+          </a>
+        </div>
+
+        <div class="nav-section">
+          <p class="nav-section-title">Communications</p>
+          <a href="#" class="nav-link" data-section="announcements">
+            <span class="icon">📢</span>
+            <span>Announcements</span>
+          </a>
+          <a href="#" class="nav-link" data-section="messages">
+            <span class="icon">💬</span>
+            <span>Messages</span>
+            <span class="nav-badge">3</span>
+          </a>
+        </div>
+
+        <div class="nav-section">
+          <p class="nav-section-title">Administration</p>
+          <a href="#" class="nav-link" data-section="reports">
+            <span class="icon">📄</span>
+            <span>Reports</span>
+          </a>
+          <a href="#" class="nav-link" data-section="settings">
+            <span class="icon">⚙️</span>
+            <span>Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-card">
+          <div class="user-avatar">AM</div>
+          <div class="user-info">
+            <p class="user-name">Aurora Magtalas</p>
+            <p class="user-role">Master Teacher II</p>
+          </div>
+        </div>
+        <button class="logout-btn">Logout</button>
+      </div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+      <!-- TOPBAR -->
+      <div class="topbar">
+        <div class="topbar-left">
+          <button class="menu-btn" id="menuBtn">☰</button>
+          <div class="topbar-text">
+            <h3>Welcome, Aurora</h3>
+            <p>Master Teacher II - English Department</p>
+          </div>
+        </div>
+
+        <div class="topbar-center">
+          <div class="search-box">
+            <input type="text" placeholder="Search students, grades..." id="searchInput">
+            <span class="search-icon">🔍</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="notification-btn">
+            🔔
+            <span class="notification-badge">2</span>
+          </button>
+          <button class="topbar-logout">Logout</button>
+        </div>
+      </div>
+
+      <!-- ALERTS -->
+      <div class="alerts-container" id="alertsContainer"></div>
+
+      <!-- QUICK STATS -->
+      <div class="stats-section">
+        <div class="stat-card">
+          <div class="stat-icon">📚</div>
+          <div class="stat-info">
+            <p class="stat-label">Classes</p>
+            <p class="stat-value">6</p>
+            <p class="stat-desc">210 Students</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-info">
+            <p class="stat-label">Total Students</p>
+            <p class="stat-value">267</p>
+            <p class="stat-desc">3 Sections</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">✓</div>
+          <div class="stat-info">
+            <p class="stat-label">Attendance Today</p>
+            <p class="stat-value">254</p>
+            <p class="stat-desc">95.1% Rate</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">📝</div>
+          <div class="stat-info">
+            <p class="stat-label">To Grade</p>
+            <p class="stat-value">18</p>
+            <p class="stat-desc">Due Today</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT GRID -->
+      <div class="content-grid grid-2">
+
+        <!-- TODAY'S SCHEDULE -->
+        <div class="formal-card">
+          <div class="card-header">
+            <h4>Class Schedule</h4>
+            <span class="card-subtitle">Today's Classes</span>
+          </div>
+
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Class</th>
+                <th>Room</th>
+                <th>Students</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>08:00 - 09:00</td>
+                <td>English 10</td>
+                <td>Room 201</td>
+                <td>44</td>
+              </tr>
+              <tr>
+                <td>09:15 - 10:15</td>
+                <td>English 9</td>
+                <td>Room 202</td>
+                <td>45</td>
+              </tr>
+              <tr>
+                <td>10:30 - 11:30</td>
+                <td>English 8</td>
+                <td>Room 203</td>
+                <td>42</td>
+              </tr>
+              <tr class="break-row">
+                <td colspan="4">Lunch Break: 12:00 - 01:00</td>
+              </tr>
+              <tr>
+                <td>01:00 - 02:00</td>
+                <td>English 10 (B)</td>
+                <td>Room 204</td>
+                <td>46</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- PENDING TASKS -->
+        <div class="formal-card">
+          <div class="card-header">
+            <h4>Tasks & Deadlines</h4>
+            <span class="card-subtitle">5 Active Tasks</span>
+          </div>
+
+          <div class="task-list">
+            <div class="task-item urgent">
+              <div class="task-dot"></div>
+              <div class="task-info">
+                <p class="task-title">Grade Quiz #2 - English 10</p>
+                <p class="task-meta">Due: Today, 4:00 PM</p>
+              </div>
+              <span class="task-status">45/45</span>
+            </div>
+
+            <div class="task-item pending">
+              <div class="task-dot"></div>
+              <div class="task-info">
+                <p class="task-title">Submit Lesson Plans</p>
+                <p class="task-meta">Due: December 18</p>
+              </div>
+              <span class="task-status">0/6</span>
+            </div>
+
+            <div class="task-item inprogress">
+              <div class="task-dot"></div>
+              <div class="task-info">
+                <p class="task-title">Encode Midterm Grades</p>
+                <p class="task-meta">Due: December 20</p>
+              </div>
+              <span class="task-status">4/6</span>
+            </div>
+
+            <div class="task-item scheduled">
+              <div class="task-dot"></div>
+              <div class="task-info">
+                <p class="task-title">Department Meeting</p>
+                <p class="task-meta">Tomorrow, 3:00 PM</p>
+              </div>
+              <span class="task-status">Scheduled</span>
+            </div>
+
+            <div class="task-item inprogress">
+              <div class="task-dot"></div>
+              <div class="task-info">
+                <p class="task-title">Intervention Plans</p>
+                <p class="task-meta">Low Performing Students</p>
+              </div>
+              <span class="task-status">2/5</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CLASSES OVERVIEW TABLE -->
+      <div class="formal-card full-width">
+        <div class="card-header">
+          <h4>Class Performance Overview</h4>
+          <select id="classFilter" class="filter-select">
+            <option>All Classes</option>
+            <option>Grade 8</option>
+            <option>Grade 9</option>
+            <option>Grade 10</option>
+          </select>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Class</th>
+              <th>Grade Level</th>
+              <th>Students</th>
+              <th>Avg. Grade</th>
+              <th>Attendance</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>English 10 (A)</strong></td>
+              <td>Grade 10</td>
+              <td>44</td>
+              <td>87.5</td>
+              <td>96.3%</td>
+              <td><span class="badge excellent">Excellent</span></td>
+              <td><a href="#" class="action-link">View</a></td>
+            </tr>
+            <tr>
+              <td><strong>English 9 (A)</strong></td>
+              <td>Grade 9</td>
+              <td>45</td>
+              <td>85.2</td>
+              <td>94.8%</td>
+              <td><span class="badge satisfactory">Good</span></td>
+              <td><a href="#" class="action-link">View</a></td>
+            </tr>
+            <tr>
+              <td><strong>English 8 (A)</strong></td>
+              <td>Grade 8</td>
+              <td>42</td>
+              <td>82.1</td>
+              <td>93.5%</td>
+              <td><span class="badge satisfactory">Good</span></td>
+              <td><a href="#" class="action-link">View</a></td>
+            </tr>
+            <tr>
+              <td><strong>English 10 (B)</strong></td>
+              <td>Grade 10</td>
+              <td>46</td>
+              <td>89.3</td>
+              <td>97.1%</td>
+              <td><span class="badge excellent">Excellent</span></td>
+              <td><a href="#" class="action-link">View</a></td>
+            </tr>
+            <tr>
+              <td><strong>English 9 (B)</strong></td>
+              <td>Grade 9</td>
+              <td>45</td>
+              <td>84.8</td>
+              <td>95.2%</td>
+              <td><span class="badge satisfactory">Good</span></td>
+              <td><a href="#" class="action-link">View</a></td>
+            </tr>
+            <tr>
+              <td><strong>English 8 (B)</strong></td>
+              <td>Grade 8</td>
+              <td>45</td>
+              <td>81.5</td>
+              <td>92.8%</td>
+              <td><span class="badge needsimprovement">Fair</span></td>
+              <td><a href="#" class="action-link">View</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- RECENT SUBMISSIONS & MESSAGES -->
+      <div class="content-grid grid-2">
+
+        <!-- SUBMISSIONS -->
+        <div class="formal-card">
+          <div class="card-header">
+            <h4>Recent Submissions</h4>
+            <span class="card-subtitle">Latest Activity</span>
+          </div>
+
+          <div class="submission-list">
+            <div class="submission-item new">
+              <div class="submission-icon">📝</div>
+              <div class="submission-info">
+                <p class="submission-title">Quiz #2 - English 10</p>
+                <p class="submission-meta">45 submissions • Just now</p>
+              </div>
+              <span class="submission-badge">NEW</span>
+            </div>
+
+            <div class="submission-item">
+              <div class="submission-icon">📊</div>
+              <div class="submission-info">
+                <p class="submission-title">Essay Assignment</p>
+                <p class="submission-meta">32/42 submitted • 2 hours ago</p>
+              </div>
+              <span class="submission-badge">Pending</span>
+            </div>
+
+            <div class="submission-item">
+              <div class="submission-icon">📋</div>
+              <div class="submission-info">
+                <p class="submission-title">Project Proposal</p>
+                <p class="submission-meta">28/45 submitted • Yesterday</p>
+              </div>
+              <span class="submission-badge">In Progress</span>
+            </div>
+
+            <div class="submission-item completed">
+              <div class="submission-icon">✓</div>
+              <div class="submission-info">
+                <p class="submission-title">Reading Comprehension Test</p>
+                <p class="submission-meta">All 127 students • Completed</p>
+              </div>
+              <span class="submission-badge">Done</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MESSAGES -->
+        <div class="formal-card">
+          <div class="card-header">
+            <h4>Messages</h4>
+            <span class="card-subtitle">2 Unread</span>
+          </div>
+
+          <div class="message-list">
+            <div class="message-item unread">
+              <div class="message-avatar">PA</div>
+              <div class="message-content">
+                <p class="message-from">Principal Aurora</p>
+                <p class="message-body">Reminder: Faculty meeting tomorrow at 3:00 PM</p>
+              </div>
+              <span class="message-time">2h ago</span>
+            </div>
+
+            <div class="message-item unread">
+              <div class="message-avatar">DH</div>
+              <div class="message-content">
+                <p class="message-from">Department Head</p>
+                <p class="message-body">Please submit grades by December 20</p>
+              </div>
+              <span class="message-time">4h ago</span>
+            </div>
+
+            <div class="message-item">
+              <div class="message-avatar">GC</div>
+              <div class="message-content">
+                <p class="message-from">Guidance Counselor</p>
+                <p class="message-body">Updated student intervention list</p>
+              </div>
+              <span class="message-time">1d ago</span>
+            </div>
+
+            <div class="message-item">
+              <div class="message-avatar">AD</div>
+              <div class="message-content">
+                <p class="message-from">Admin</p>
+                <p class="message-body">System maintenance scheduled Friday</p>
+              </div>
+              <span class="message-time">2d ago</span>
+            </div>
+          </div>
+
+          <a href="#" class="view-all-link">View All Messages →</a>
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        <p>&copy; 2024 Kiwalan National High School. All rights reserved.</p>
+        <p class="footer-meta">System Version 2.1.0 | Last Updated: December 14, 2024</p>
+      </div>
+
+    </div>
+
+    <script src="js/teacher-dashboard.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+      // FIXED: replaced weak localStorage role check with real JWT verification
+      guardRoute("teacher");
+    </script>
+
+  </body>
+</html>

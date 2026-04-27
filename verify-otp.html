@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verify OTP</title>
+
+  <link rel="stylesheet" href="css/verify.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="stars"></div>
+
+  <div class="page-wrap">
+
+    <!-- LEFT BRAND PANEL -->
+    <div class="brand-panel">
+
+      <div class="brand-glow"></div>
+
+      <div class="brand-content">
+
+        <div class="school-crest">
+          <div class="crest-ring outer"></div>
+          <div class="crest-ring middle"></div>
+          <div class="crest-icon">🔐</div>
+        </div>
+
+        <div class="school-name">KNHS Portal</div>
+        <div class="school-sub">Email Verification</div>
+
+        <div class="brand-divider"></div>
+
+        <div class="brand-tagline">
+          Enter the 6-digit code sent to your email
+        </div>
+
+        <div class="brand-steps">
+          <div class="step done">
+            <div class="step-dot">1</div>
+            <span>Signup</span>
+          </div>
+
+          <div class="step-line"></div>
+
+          <div class="step active">
+            <div class="step-dot">2</div>
+            <span>Verify</span>
+          </div>
+
+          <div class="step-line"></div>
+
+          <div class="step">
+            <div class="step-dot">3</div>
+            <span>Login</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FORM PANEL -->
+    <div class="form-panel">
+
+      <div class="form-card">
+
+        <div class="form-header">
+          <h2>Verify Your Email</h2>
+          <p>We sent a 6-digit OTP to your email address</p>
+        </div>
+
+        <!-- MESSAGE BOX (FIXED FOR JS) -->
+        <div id="msgBox" class="msg-box"></div>
+
+        <!-- OTP INPUT -->
+        <div class="field-group">
+          <label for="otp">OTP Code</label>
+
+          <div class="input-wrap">
+            <span class="input-icon">🔢</span>
+
+            <input 
+              type="text"
+              id="otp"
+              maxlength="6"
+              placeholder="Enter 6-digit OTP"
+              autocomplete="one-time-code"
+            />
+          </div>
+
+          <small class="field-error" id="otpErr"></small>
+        </div>
+
+        <!-- VERIFY BUTTON -->
+        <button class="submit-btn" onclick="verifyOTP()">
+          <span class="btn-text">Verify Account</span>
+        </button>
+
+        <!-- RESEND -->
+        <div class="form-footer">
+          Didn’t receive code?
+          <a href="#" onclick="resendOTP()">Resend OTP</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="js/verify.js"></script>
+
+</body>
+</html>

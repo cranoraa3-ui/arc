@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Student Dashboard</title>
+      <link rel="stylesheet" href="css/student-dashboard.css">
+    </head>
+
+    <body>
+
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <h2>KNHS SIS</h2>
+
+        <a href="#">🏠 Dashboard</a>
+        <a href="#">📊 Grades</a>
+        <a href="#">📅 Schedule</a>
+        <a href="#">📝 Tasks</a>
+        <a href="#">📢 Announcements</a>
+        <a href="#">⚙️ Settings</a>
+      </div>
+
+      <!-- OVERLAY (FIXED POSITION) -->
+      <div class="overlay"></div>
+
+      <!-- MAIN -->
+      <div class="main">
+
+        <!-- TOPBAR -->
+        <div class="topbar">
+
+          <div class="topbar-left">
+            <h3>Welcome back, Juan 👋</h3>
+            <p>Grade 10 • Section A</p>
+          </div>
+
+          <div class="topbar-right">
+
+            <button class="logout">Logout</button>
+
+            <button class="menu-btn" id="menuBtn">☰</button>
+
+          </div>
+
+        </div>
+
+        <!-- PROFILE SECTION -->
+        <div class="profile">
+
+          <div class="avatar-section">
+
+            <div class="avatar-wrapper">
+              <img id="profileImg" src="https://via.placeholder.com/120" alt="a">
+              <label for="uploadImg" class="upload-btn">✏️</label>
+              <span class="avatar-placeholder">👤</span>
+            </div>
+
+            <div class="avatar-actions">
+              <label for="uploadImg" class="text-btn">Change Photo</label>
+              <button id="deleteImg" class="delete-btn">Remove</button>
+              <input type="file" id="uploadImg" accept="image/*">
+            </div>
+
+          </div>
+
+          <div class="profile-info">
+            <h2>Juan Dela Cruz</h2>
+            <p>Student ID: 2026-00123</p>
+            <p>Status: Active</p>
+          </div>
+
+          <div class="profile-mini-stats">
+            <div>
+              <span>GPA</span>
+              <strong>89.5</strong>
+            </div>
+
+            <div>
+              <span>Rank</span>
+              <strong>Top 15</strong>
+            </div>
+
+            <div>
+              <span>Attendance</span>
+              <strong>95%</strong>
+            </div>
+          </div>  
+
+        </div>
+
+        <!-- GRID STATS -->
+        <div class="grid">
+
+          <div class="card">
+            <h3>📊 GPA</h3>
+            <p class="big">89.5</p>
+          </div>
+
+          <div class="card">
+            <h3>📚 Subjects</h3>
+            <p class="big">8</p>
+          </div>
+
+          <div class="card">
+            <h3>⏰ Attendance</h3>
+            <p class="big">95%</p>
+          </div>
+
+          <div class="card">
+            <h3>🏆 Rank</h3>
+            <p class="big">Top 15</p>
+          </div>
+
+        </div>
+
+        <!-- SECOND GRID -->
+        <div class="grid">
+
+          <div class="card">
+            <h3>📅 Today</h3>
+            <p>Next Class: Math</p>
+            <p>Time: 10:00 AM</p>
+            <p>Room: 302</p>
+          </div>
+
+          <div class="card">
+            <h3>📝 Tasks</h3>
+            <p>• Math Homework (Due tomorrow)</p>
+            <p>• Science Report (Friday)</p>
+          </div>
+
+          <div class="card">
+            <h3>📬 Messages</h3>
+            <p>Teacher: Submit assignment</p>
+            <p>Admin: ID validation update</p>
+          </div>
+
+          <div class="card">
+            <h3>📈 Performance</h3>
+            <p>Math: Improving</p>
+            <p>Science: Stable</p>
+            <p>English: Improving</p>
+          </div>
+
+        </div>
+
+        <!-- ANNOUNCEMENTS -->
+        <div class="card full">
+
+          <h3>📢 Announcements</h3>
+
+          <div class="announcement">
+            Classes suspended tomorrow due to weather.
+          </div>
+
+          <div class="announcement">
+            Card distribution on Friday.
+          </div>
+
+          <div class="announcement">
+            PTA meeting next week.
+          </div>
+
+        </div>
+
+        <!-- GRADES TABLE -->
+        <div class="card full">
+
+          <h3>📊 Recent Grades</h3>
+
+          <table>
+            <tr>
+              <th>Subject</th>
+              <th>Grade</th>
+              <th>Remarks</th>
+            </tr>
+
+            <tr><td>Math</td><td>92</td><td>Excellent</td></tr>
+            <tr><td>Science</td><td>88</td><td>Good</td></tr>
+            <tr><td>English</td><td>90</td><td>Very Good</td></tr>
+          </table>
+
+        </div>
+
+      </div>
+
+      <div id="confirmModal" class="modal hidden">
+        <div class="modal-box">
+          <h3>Remove Profile Picture?</h3>
+          <p>This action will reset your avatar to default.</p>
+
+          <div class="modal-actions">
+            <button id="cancelRemove" class="btn cancel">Cancel</button>
+            <button id="confirmRemove" class="btn danger">Remove</button>
+          </div>
+        </div>
+      </div>
+
+      <script src="js/dashboard.js"></script>
+      <script>
+        // FIXED: replaced weak localStorage role check with real JWT verification
+        guardRoute("student");
+      </script>
+
+    </body>
+  </html>
